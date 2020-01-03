@@ -13,7 +13,7 @@ interface ChoiceDao {
     suspend fun deleteChoice(choice: Choice)
 
     @Query("SELECT * FROM choices WHERE question_id = :questionId")
-    suspend fun getChoice(questionId:Int):List<Choice>
+    suspend fun getAllChoice(questionId:Int):List<Choice>
 
 
 
