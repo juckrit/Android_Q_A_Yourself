@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.main
+package com.example.qayourself.ui.Fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
