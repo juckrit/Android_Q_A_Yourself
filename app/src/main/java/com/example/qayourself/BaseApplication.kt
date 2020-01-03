@@ -13,9 +13,6 @@ class BaseApplication:Application() {
     override fun onCreate() {
         super.onCreate()
 
-        database = Room.databaseBuilder(this
-            ,QuestionAndAnswerDatabase::class.java
-            ,"question_and_answer_database")
-            .build()
+        database = QuestionAndAnswerDatabase.getInstance(this)
     }
 }
