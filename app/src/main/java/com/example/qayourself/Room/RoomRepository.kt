@@ -21,6 +21,21 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         parentJob.cancel()
     }
 
+    fun saveQuestion(question: Question){
+        insertQuestion(question)
+    }
+
+    fun removeQuestion(question: Question){
+        deleteQuestion(question)
+    }
+
+    fun getAllOfQuestion(): List<Question>{
+        return getAllQuestion()
+    }
+
+
+
+
     override fun insertQuestion(question: Question) {
         coroutineScope.launch {
             questionDao.insertQuestion(question)

@@ -12,15 +12,15 @@
         tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/allQuestionFragment" />
+            app:destination="@id/questionFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/allQuestionFragment"
-        android:name="com.example.qayourself.ui.Fragment.AllQuestionFragment"
-        android:label="all_question_fragment"
-        tools:layout="@layout/all_question_fragment" />
+        android:id="@+id/questionFragment"
+        android:name="com.example.qayourself.ui.Fragment.QuestionFragment"
+        android:label="question_fragment"
+        tools:layout="@layout/question_fragment" />
 
 
 </navigation>
