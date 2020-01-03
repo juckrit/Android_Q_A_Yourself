@@ -8,15 +8,15 @@ import androidx.room.*
     foreignKeys = arrayOf(
         ForeignKey(
             entity = Question::class,
-            parentColumns = arrayOf("id"),
-            childColumns = arrayOf("questionId"),
+            parentColumns = arrayOf("question_id"),
+            childColumns = arrayOf("question_id"),
             onDelete = ForeignKey.CASCADE
         )
     )
 )
 data class Choice(
     @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
-    @ColumnInfo(name = "questionId", index = true)
+    @ColumnInfo(name = "question_id", index = true)
     @NonNull val questionId: Int
 
 )

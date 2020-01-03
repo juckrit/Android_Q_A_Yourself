@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface QuestionDao{
+interface QuestionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertQuestion(question: Question)
+    suspend fun insertQuestion(question: Question)
 
     @Delete
-    fun deleteQuestion(question: Question)
+    suspend fun deleteQuestion(question: Question)
 
-    @Query("SELECT *  FROM questions ORDER BY id DESC")
-    fun getAllQuestion():LiveData<List<Question>>
+    @Query("SELECT *  FROM questions ORDER BY question_id DESC")
+    suspend fun getAllQuestion(): List<Question>
 }
