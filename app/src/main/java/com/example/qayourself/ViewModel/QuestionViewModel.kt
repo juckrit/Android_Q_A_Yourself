@@ -2,9 +2,11 @@ package com.example.qayourself.ViewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.qayourself.Generator.QuestionGenerator
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
+import kotlinx.coroutines.launch
 
 class QuestionViewModel(
     private var repository: RoomRepository = RoomRepository()
@@ -19,9 +21,9 @@ class QuestionViewModel(
     private var percentCorrectCount: Int = 0
     lateinit var questionEntity: Question
 
-    fun stopCoroutineJob(){
-        repository.destroyJob()
-    }
+//    fun stopCoroutineJob(){
+//        repository.destroyJob()
+//    }
 
     fun getQuestionLiveData(): MutableLiveData<Question> {
         return questionLiveData
@@ -60,7 +62,11 @@ class QuestionViewModel(
 
 
     fun saveQuestion() {
-        repository.saveQuestion(questionEntity)
+
+        viewModelScope.launch {
+            repository.saveQuestion(questionEntity)
+
+        }
     }
 
 

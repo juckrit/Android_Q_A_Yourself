@@ -120,9 +120,9 @@ class QuestionFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.stopCoroutineJob()
-    }
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        viewModel.stopCoroutineJob()
+//    }
 
 }

@@ -3,9 +3,9 @@ package com.example.qayourself.Room
 import androidx.lifecycle.LiveData
 
 interface ChoiceRepository {
-    fun insertChoice(choice: Choice)
+    suspend fun insertChoice(choice: Choice)
 
-    fun deleteChoice(choice: Choice)
+    suspend fun deleteChoice(choice: Choice)
 
-    fun getAllChoice(questionId:Int): List<Choice>
+    fun getAllChoice(questionId: Int): LiveData<List<Choice>>
 }
