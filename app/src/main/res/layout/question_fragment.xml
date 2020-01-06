@@ -13,7 +13,6 @@
         tools:context=".ui.Fragment.QuestionFragment">
 
 
-
         <TextView
             android:id="@+id/tv_question"
             android:layout_width="match_parent"
@@ -38,9 +37,39 @@
             android:id="@+id/et_view_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="9"
             android:hint="put view count here"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="9" />
+
+        <TextView
+            android:id="@+id/tv_total_correct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Correct"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/et_total_correct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="put total correct"
+            android:inputType="number"
+            android:maxLength="9" />
+
+        <TextView
+            android:id="@+id/tv_total_incorrect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Incorrect"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/et_total_incorrect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="put total incorrect"
+            android:inputType="number"
+            android:maxLength="9" />
 
 
         <Button
@@ -53,44 +82,86 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Preview"
             android:textSize="30sp" />
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+            <TableRow
+                android:background="#0079D6"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="title" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="view" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="correct" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="incorrect" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="correctPercent" />
+            </TableRow>
+
+            <TableRow
+                android:background="#DAE8FC"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/tv_preview_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    tools:text="tv_preview_title" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:text="2" />
 
                 <TextView
                     android:id="@+id/tv_preview_view_count"
-                    android:layout_width="match_parent"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    tools:text="100" />
+                    android:text="Rohini Alavala" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_preview_correct"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guntur" />
 
+                <TextView
+                    android:id="@+id/tv_preview_incorrect"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guntur" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_preview_correct_percent"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="Guntur" />
+            </TableRow>
+
+        </TableLayout>
+
 
     </LinearLayout>
+
+
 </ScrollView>

@@ -40,8 +40,11 @@ class QuestionFragment : Fragment() {
 
 
         viewModel.getQuestionLiveData().observe(this, Observer {
-            tv_preview_title.text = it.question
+            tv_preview_title.text = it.questionTitle
             tv_preview_view_count.text = it.totalView.toString()
+            tv_preview_correct.text = it.totalCorrect.toString()
+            tv_preview_incorrect.text = it.totalIncorrect.toString()
+            tv_preview_correct_percent.text = it.correctPercent.toString()
         })
 
         et_question.addTextChangedListener(object : TextWatcher {
@@ -65,6 +68,40 @@ class QuestionFragment : Fragment() {
                     value = s.toString().toInt()
                 }
                 viewModel.viewCountFilled(value)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        et_total_correct.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                var value = 0
+                if (s.toString().isNullOrBlank()) {
+                    value = 0
+                } else {
+                    value = s.toString().toInt()
+                }
+                viewModel.correctCountFilled(value)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+        et_total_incorrect . addTextChangedListener (object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                var value = 0
+                if (s.toString().isNullOrBlank()) {
+                    value = 0
+                } else {
+                    value = s.toString().toInt()
+                }
+                viewModel.incorrectCountFilled(value)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
