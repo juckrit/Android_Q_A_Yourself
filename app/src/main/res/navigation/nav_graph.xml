@@ -20,7 +20,13 @@
         android:id="@+id/questionFragment"
         android:name="com.example.qayourself.ui.Fragment.QuestionFragment"
         android:label="question_fragment"
-        tools:layout="@layout/question_fragment" />
+        tools:layout="@layout/question_fragment" >
+        <action
+            android:id="@+id/back_to_mainFragment"
+            app:destination="@id/mainFragment"/>
+
+    </fragment>
+
 
 
 </navigation>

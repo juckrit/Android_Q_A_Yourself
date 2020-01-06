@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -88,8 +87,8 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            >
 
             <TableRow
                 android:background="#0079D6"
@@ -131,31 +130,31 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                     />
 
                 <TextView
                     android:id="@+id/tv_preview_view_count"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="Rohini Alavala" />
+                     />
 
                 <TextView
                     android:id="@+id/tv_preview_correct"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="Guntur" />
+                     />
 
                 <TextView
                     android:id="@+id/tv_preview_incorrect"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="Guntur" />
+                     />
 
                 <TextView
                     android:id="@+id/tv_preview_correct_percent"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="Guntur" />
+                     />
             </TableRow>
 
         </TableLayout>

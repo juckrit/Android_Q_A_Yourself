@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
@@ -30,17 +31,26 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
+
+
         floatingActionButton.setOnClickListener { buttonView ->
             buttonView
                 .findNavController()
                 .navigate(R.id.action_firstFragment_to_secondFragment)
         }
+
+        viewModel.getAllQuestionLiveData().observe(this, Observer { it->
+            val a = it
+            val s = a.size
+            val q =9
+        })
+
     }
 
 }

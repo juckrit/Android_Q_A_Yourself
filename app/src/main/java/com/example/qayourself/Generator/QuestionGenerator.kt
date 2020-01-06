@@ -9,7 +9,13 @@ class QuestionGenerator {
         , totalCorrect: Int
         , totalIncorrect: Int
     ): Question {
-        val percent = (totalCorrect * 100) / totalView
+        var percent = 0
+        if (totalView==0){
+
+        }else{
+             percent = (totalCorrect * 100) / totalView
+
+        }
         return Question(id, questionTitle, totalView, totalCorrect, totalIncorrect, percent)
 
     }

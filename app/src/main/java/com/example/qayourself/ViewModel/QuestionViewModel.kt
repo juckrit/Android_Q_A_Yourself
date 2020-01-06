@@ -2,10 +2,14 @@ package com.example.qayourself.ViewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.qayourself.Generator.QuestionGenerator
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
 
-class QuestionViewModel(private var repository: RoomRepository = RoomRepository()) : ViewModel() {
+class QuestionViewModel(
+    private var repository: RoomRepository = RoomRepository()
+    , private val generator: QuestionGenerator = QuestionGenerator()
+) : ViewModel() {
 
     private val questionLiveData = MutableLiveData<Question>()
     private var title: String = ""
@@ -15,12 +19,17 @@ class QuestionViewModel(private var repository: RoomRepository = RoomRepository(
     private var percentCorrectCount: Int = 0
     lateinit var questionEntity: Question
 
+    fun stopCoroutineJob(){
+        repository.destroyJob()
+    }
+
     fun getQuestionLiveData(): MutableLiveData<Question> {
         return questionLiveData
     }
 
     private fun updateQuestion() {
-        questionEntity = Question(0, title, viewCount,correctCount,incorrectCount,percentCorrectCount)
+        questionEntity =
+            generator.generateQuestion(0, title, viewCount, correctCount, incorrectCount)
         questionLiveData.postValue(questionEntity)
 
     }
@@ -32,6 +41,7 @@ class QuestionViewModel(private var repository: RoomRepository = RoomRepository(
 
     fun viewCountFilled(count: Int) {
         this.viewCount = count
+
         updateQuestion()
 
     }
@@ -47,7 +57,6 @@ class QuestionViewModel(private var repository: RoomRepository = RoomRepository(
         updateQuestion()
 
     }
-
 
 
     fun saveQuestion() {

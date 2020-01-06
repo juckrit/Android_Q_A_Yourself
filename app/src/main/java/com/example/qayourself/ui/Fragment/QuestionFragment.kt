@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.QuestionViewModel
@@ -113,8 +114,15 @@ class QuestionFragment : Fragment() {
 
         btn_add.setOnClickListener {
             viewModel.saveQuestion()
+            it.findNavController()
+                .navigate(R.id.back_to_mainFragment)
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stopCoroutineJob()
     }
 
 }
