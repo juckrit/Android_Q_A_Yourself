@@ -12,5 +12,5 @@ interface QuestionDao {
     suspend fun deleteQuestion(question: Question)
 
     @Query("SELECT *  FROM questions ORDER BY question_id DESC")
-    suspend fun getAllQuestion(): List<Question>
+    fun getAllQuestion(): LiveData<List<Question>>
 }

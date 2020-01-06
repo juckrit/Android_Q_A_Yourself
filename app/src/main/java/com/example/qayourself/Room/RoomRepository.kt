@@ -21,19 +21,17 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         parentJob.cancel()
     }
 
-    fun saveQuestion(question: Question){
+    fun saveQuestion(question: Question) {
         insertQuestion(question)
     }
 
-    fun removeQuestion(question: Question){
+    fun removeQuestion(question: Question) {
         deleteQuestion(question)
     }
 
-    fun getAllOfQuestion(): List<Question>{
+    fun getAllOfQuestion(): LiveData<List<Question>> {
         return getAllQuestion()
     }
-
-
 
 
     override fun insertQuestion(question: Question) {
@@ -48,12 +46,8 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         }
     }
 
-    override fun getAllQuestion(): List<Question> {
-        var result: List<Question> = listOf()
-        coroutineScope.launch {
-            result = questionDao.getAllQuestion()
-        }
-        return result
+    override fun getAllQuestion(): LiveData<List<Question>> {
+        return   questionDao.getAllQuestion()
     }
 
     override fun insertChoice(choice: Choice) {

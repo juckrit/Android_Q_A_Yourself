@@ -7,6 +7,6 @@ interface QuestionRepository {
 
     fun deleteQuestion(question: Question)
 
-    fun getAllQuestion(): List<Question>
+    fun getAllQuestion(): LiveData<List<Question>>
 
 }
