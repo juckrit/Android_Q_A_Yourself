@@ -13,5 +13,8 @@ data class Question(
     @ColumnInfo(name = "question_id", index = true)
     @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
     val question: String,
-    val totalView: Int
+    val totalView: Int,
+    val totalCorrect: Int,
+    val totalIncorrect: Int,
+    val correctPercent: Int
 )
