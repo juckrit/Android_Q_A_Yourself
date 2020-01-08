@@ -6,7 +6,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class QuestionTest {
+class QuestionGeneraterTest {
     private lateinit var questionGenerator: QuestionGenerator
 
     @Before
