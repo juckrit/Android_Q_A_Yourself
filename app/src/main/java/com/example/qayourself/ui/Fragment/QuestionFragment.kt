@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 
 import com.example.qayourself.R
+import com.example.qayourself.Util.showToast
 import com.example.qayourself.ViewModel.QuestionViewModel
 import kotlinx.android.synthetic.main.question_fragment.*
 
@@ -39,8 +41,16 @@ class QuestionFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
 
+        viewModel.getSaveLiveData().observe(this, Observer { canSave->
+            if (canSave){
+                view.findNavController()
+                    .navigate(R.id.back_to_mainFragment)
+            }else{
+                showToast(context,"กรุณากรอกชื่อคำถาม")
+            }
+        })
 
-        viewModel.getQuestionLiveData().observe(this, Observer {
+            viewModel.getQuestionLiveData().observe(this, Observer {
             tv_preview_title.text = it.questionTitle
             tv_preview_view_count.text = it.totalView.toString()
             tv_preview_correct.text = it.totalCorrect.toString()
@@ -114,8 +124,7 @@ class QuestionFragment : Fragment() {
 
         btn_add.setOnClickListener {
             viewModel.saveQuestion()
-            it.findNavController()
-                .navigate(R.id.back_to_mainFragment)
+
         }
 
     }

@@ -1,11 +1,13 @@
 package com.example.qayourself.ViewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.qayourself.Generator.QuestionGenerator
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
+import com.example.qayourself.Util.showToast
 import kotlinx.coroutines.launch
 
 class QuestionViewModel(
@@ -13,14 +15,19 @@ class QuestionViewModel(
     , private val generator: QuestionGenerator = QuestionGenerator()
 ) : ViewModel() {
 
-    val mQuestionLiveData = MutableLiveData<Question>()
+    private val mQuestionLiveData = MutableLiveData<Question>()
     var title: String = ""
     var totalView: Int = 0
     var correctCount: Int = 0
     var incorrectCount: Int = 0
-//    var percentCorrectCount: Int = 0
-    var id:Int =0
+    //    var percentCorrectCount: Int = 0
+    var id: Int = 0
     lateinit var question: Question
+
+    private val saveLiveData= MutableLiveData<Boolean>()
+
+
+    fun getSaveLiveData() : LiveData<Boolean> = saveLiveData
 
 //    fun stopCoroutineJob(){
 //        repository.destroyJob()
@@ -63,10 +70,24 @@ class QuestionViewModel(
 
 
     fun saveQuestion() {
+        if (canSaveQuestion()) {
+            viewModelScope.launch {
+                repository.saveQuestion(question)
 
-        viewModelScope.launch {
-            repository.saveQuestion(question)
+            }
+            saveLiveData.postValue(true)
+        } else{
+            saveLiveData.postValue(false)
 
+        }
+
+    }
+
+    fun canSaveQuestion(): Boolean {
+        if (title.isNullOrEmpty()) {
+            return false
+        } else {
+            return true
         }
     }
 
