@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
+import com.example.qayourself.adapter.AllQuestionGroupAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
@@ -45,11 +47,14 @@ class MainFragment : Fragment() {
                 .navigate(R.id.action_firstFragment_to_secondFragment)
         }
 
-        viewModel.getAllQuestionLiveData().observe(this, Observer { it->
-            val a = it
-            val s = a.size
-            val q =9
+        val adapter = AllQuestionGroupAdapter(context!!, mutableListOf())
+        recycleview.layoutManager = LinearLayoutManager(context!!)
+        recycleview.adapter = adapter
+
+        viewModel.getAllQuestionLiveData().observe(this, Observer { it ->
+            adapter.updateCreatures(it)
         })
+
 
     }
 
