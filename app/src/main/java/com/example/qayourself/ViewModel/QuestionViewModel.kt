@@ -13,26 +13,27 @@ class QuestionViewModel(
     , private val generator: QuestionGenerator = QuestionGenerator()
 ) : ViewModel() {
 
-    private val questionLiveData = MutableLiveData<Question>()
-    private var title: String = ""
-    private var viewCount: Int = 0
-    private var correctCount: Int = 0
-    private var incorrectCount: Int = 0
-    private var percentCorrectCount: Int = 0
-    lateinit var questionEntity: Question
+    val mQuestionLiveData = MutableLiveData<Question>()
+    var title: String = ""
+    var totalView: Int = 0
+    var correctCount: Int = 0
+    var incorrectCount: Int = 0
+//    var percentCorrectCount: Int = 0
+    var id:Int =0
+    lateinit var question: Question
 
 //    fun stopCoroutineJob(){
 //        repository.destroyJob()
 //    }
 
     fun getQuestionLiveData(): MutableLiveData<Question> {
-        return questionLiveData
+        return mQuestionLiveData
     }
 
-    private fun updateQuestion() {
-        questionEntity =
-            generator.generateQuestion(0, title, viewCount, correctCount, incorrectCount)
-        questionLiveData.postValue(questionEntity)
+    fun updateQuestion() {
+        question =
+            generator.generateQuestion(id, title, totalView, correctCount, incorrectCount)
+        mQuestionLiveData.postValue(question)
 
     }
 
@@ -42,7 +43,7 @@ class QuestionViewModel(
     }
 
     fun viewCountFilled(count: Int) {
-        this.viewCount = count
+        this.totalView = count
 
         updateQuestion()
 
@@ -64,7 +65,7 @@ class QuestionViewModel(
     fun saveQuestion() {
 
         viewModelScope.launch {
-            repository.saveQuestion(questionEntity)
+            repository.saveQuestion(question)
 
         }
     }
