@@ -6,6 +6,8 @@ import com.example.qayourself.Room.QuestionAndAnswerDatabase
 
 class BaseApplication:Application() {
 
+
+
     companion object{
         lateinit var database: QuestionAndAnswerDatabase
     }

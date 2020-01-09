@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.qayourself.Util.DB_NAME
 
 
-@Database(entities = [(Question::class), (Choice::class)], version = 1)
+@Database(entities = [(Question::class), (Choice::class)], version = 2)
 abstract class QuestionAndAnswerDatabase : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
     abstract fun choiceDao(): ChoiceDao
@@ -14,6 +17,21 @@ abstract class QuestionAndAnswerDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var instance: QuestionAndAnswerDatabase? = null
+
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "CREATE TABLE `Fruit` (`id` INTEGER, `name` TEXT, " +
+                            "PRIMARY KEY(`id`))"
+                )
+            }
+        }
+
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE Book ADD COLUMN pub_year INTEGER")
+            }
+        }
 
         fun getInstance(context: Context): QuestionAndAnswerDatabase {
             return instance ?: synchronized(this) {
@@ -25,8 +43,14 @@ abstract class QuestionAndAnswerDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 context
                 , QuestionAndAnswerDatabase::class.java
-                , "question_and_answer_database"
+                , DB_NAME
             ).build()
+
+
+//            Room.databaseBuilder(context, QuestionAndAnswerDatabase::class.java, DB_NAME)
+//                .addMigrations(MIGRATION_1_2, MIGRATION_2_3).build()
         }
     }
+
+
 }

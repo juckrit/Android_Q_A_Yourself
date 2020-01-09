@@ -4,7 +4,7 @@ import androidx.annotation.NonNull
 import androidx.room.*
 
 @Entity(
-    tableName = "choices",
+    tableName = "choices_table",
     foreignKeys = arrayOf(
         ForeignKey(
             entity = Question::class,
@@ -17,6 +17,7 @@ import androidx.room.*
 data class Choice(
     @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
     @ColumnInfo(name = "question_id", index = true)
-    @NonNull val questionId: Int
+    @NonNull val questionId: Long,
+    val isTrue: Boolean
 
 )

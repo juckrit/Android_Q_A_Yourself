@@ -7,7 +7,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "questions"
+    tableName = "questions_table"
 )
 data class Question(
     @ColumnInfo(name = "question_id", index = true)

@@ -7,13 +7,13 @@ import androidx.room.*
 interface ChoiceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertChoice(choice: Choice)
+    suspend fun insertChoice(choices :MutableList<Choice>)
 
     @Delete
     suspend fun deleteChoice(choice: Choice)
 
-    @Query("SELECT * FROM choices WHERE question_id = :questionId")
-    fun getAllChoice(questionId:Int):LiveData<List<Choice>>
+    @Query("SELECT * FROM choices_table WHERE question_id = :questionId")
+    fun getAllChoice(questionId:Long):LiveData<List<Choice>>
 
 
 

@@ -10,15 +10,20 @@ import kotlinx.coroutines.launch
 class RoomRepository : QuestionRepository, ChoiceRepository {
 
 
-    private val parentJob = Job()
+
+//    private val parentJob = Job()
 //    private val coroutineScope = CoroutineScope(Dispatchers.Main + parentJob)
 
     private val questionDao: QuestionDao = BaseApplication.database.questionDao()
     private val choiceDao: ChoiceDao = BaseApplication.database.choiceDao()
 
 
-    fun destroyJob() {
-        parentJob.cancel()
+//    fun destroyJob() {
+//        parentJob.cancel()
+//    }
+
+    suspend fun addChoices(choices:MutableList<Choice>){
+        insertChoice(choices)
     }
 
     fun getQuestionByQuestoinId(id: Long): LiveData<Question> {
@@ -55,9 +60,10 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         return questionDao.getAllQuestion()
     }
 
-    override suspend fun insertChoice(choice: Choice) {
-        choiceDao.insertChoice(choice)
 
+
+    override suspend fun insertChoice(choices: MutableList<Choice>) {
+        choiceDao.insertChoice(choices)
     }
 
     override suspend fun deleteChoice(choice: Choice) {
@@ -65,7 +71,7 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
 
     }
 
-    override fun getAllChoice(questionId: Int): LiveData<List<Choice>> {
+    override fun getAllChoice(questionId: Long): LiveData<List<Choice>> {
         return choiceDao.getAllChoice(questionId)
     }
 

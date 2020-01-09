@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_mainFragment_to_choiceFragment"
             app:destination="@id/choiceFragment"
+            app:popUpToInclusive="false"
+            app:popUpTo="@+id/mainFragment"
+
             />
 
     </fragment>
@@ -39,6 +42,11 @@
             app:argType="long"
             android:defaultValue="1L"
             app:nullable="false" />
+        <action
+            android:id="@+id/action_choiceFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/mainFragment"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
