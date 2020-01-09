@@ -3,7 +3,7 @@ package com.example.qayourself.Generator
 import com.example.qayourself.Room.Question
 
 class QuestionGenerator {
-    fun generateQuestion(id: Int
+    fun generateQuestion(id: Long
         , questionTitle: String
         , totalView: Int
         , totalCorrect: Int

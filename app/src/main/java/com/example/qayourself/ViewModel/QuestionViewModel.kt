@@ -21,13 +21,13 @@ class QuestionViewModel(
     var correctCount: Int = 0
     var incorrectCount: Int = 0
     //    var percentCorrectCount: Int = 0
-    var id: Int = 0
+    var id: Long = 0
     lateinit var question: Question
 
-    private val saveLiveData= MutableLiveData<Boolean>()
+    private val saveLiveData = MutableLiveData<Long>()
 
 
-    fun getSaveLiveData() : LiveData<Boolean> = saveLiveData
+    fun getSaveLiveData(): LiveData<Long> = saveLiveData
 
 //    fun stopCoroutineJob(){
 //        repository.destroyJob()
@@ -71,13 +71,14 @@ class QuestionViewModel(
 
     fun saveQuestion() {
         if (canSaveQuestion()) {
+            var id = 0L
             viewModelScope.launch {
-                repository.saveQuestion(question)
+                id = repository.saveQuestion(question)
+                saveLiveData.postValue(id)
 
             }
-            saveLiveData.postValue(true)
-        } else{
-            saveLiveData.postValue(false)
+        } else {
+            saveLiveData.postValue(0L)
 
         }
 

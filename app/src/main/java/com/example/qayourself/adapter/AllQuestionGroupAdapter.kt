@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
@@ -31,6 +32,7 @@ class AllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Qu
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding(dataList[position])
+
     }
 
 
@@ -40,6 +42,9 @@ class AllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Qu
             itv.tv_title.text = question.questionTitle
             itv.tv_totalVIew.text = question.totalView.toString()
             itv.tv_correctPercent.text = question.correctPercent.toString()
+//            itv.setOnClickListener {
+//                itv.findNavController().navigate(R.id.action_mainFragment_to_choiceFragment)
+//            }
         }
     }
 }

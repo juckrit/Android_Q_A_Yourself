@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey
 )
 data class Question(
     @ColumnInfo(name = "question_id", index = true)
-    @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
+    @PrimaryKey(autoGenerate = true) @NonNull val id: Long,
     val questionTitle: String,
     val totalView: Int,
     val totalCorrect: Int,

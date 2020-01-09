@@ -25,6 +25,18 @@ class QuestionFragment : Fragment() {
 
     private lateinit var viewModel: QuestionViewModel
 
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,10 +53,15 @@ class QuestionFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(QuestionViewModel::class.java)
 
-        viewModel.getSaveLiveData().observe(this, Observer { canSave->
-            if (canSave){
+        viewModel.getSaveLiveData().observe(this, Observer { question_id->
+            if (question_id!=0L){
+                val action = QuestionFragmentDirections.actionMainFragmentToChoiceFragment(
+                    questionId = question_id
+                )
                 view.findNavController()
-                    .navigate(R.id.back_to_mainFragment)
+                    .navigate(action)
+
+
             }else{
                 showToast(context,"กรุณากรอกชื่อคำถาม")
             }

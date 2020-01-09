@@ -12,7 +12,9 @@
         tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment"
+           />
+
 
     </fragment>
 
@@ -22,11 +24,23 @@
         android:label="question_fragment"
         tools:layout="@layout/question_fragment" >
         <action
-            android:id="@+id/back_to_mainFragment"
-            app:destination="@id/mainFragment"/>
+            android:id="@+id/action_mainFragment_to_choiceFragment"
+            app:destination="@id/choiceFragment"
+            />
 
     </fragment>
+    <fragment
+        android:id="@+id/choiceFragment"
+        android:name="com.example.qayourself.ui.Fragment.ChoiceFragment"
+        android:label="choice_fragment"
+        tools:layout="@layout/choice_fragment" >
+        <argument
+            android:name="questionId"
+            app:argType="long"
+            android:defaultValue="1L"
+            app:nullable="false" />
 
+    </fragment>
 
 
 </navigation>

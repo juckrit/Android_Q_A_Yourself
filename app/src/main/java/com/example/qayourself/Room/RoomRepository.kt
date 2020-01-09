@@ -21,8 +21,12 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         parentJob.cancel()
     }
 
-    suspend fun saveQuestion(question: Question) {
-        insertQuestion(question)
+    fun getQuestionByQuestoinId(id: Long): LiveData<Question> {
+        return getQestionById(id)
+    }
+
+    suspend fun saveQuestion(question: Question): Long {
+        return insertQuestion(question)
     }
 
     suspend fun removeQuestion(question: Question) {
@@ -33,9 +37,14 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
         return getAllQuestion()
     }
 
+    override fun getQestionById(id: Long): LiveData<Question> {
+        return questionDao.getQuestionById(id)
+    }
 
-    override suspend fun insertQuestion(question: Question) {
-        questionDao.insertQuestion(question)
+
+    override suspend fun insertQuestion(question: Question): Long {
+        val id = questionDao.insertQuestion(question)
+        return id
     }
 
     override suspend fun deleteQuestion(question: Question) {
