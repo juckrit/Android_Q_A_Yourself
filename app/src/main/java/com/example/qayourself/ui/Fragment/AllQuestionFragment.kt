@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
 import com.example.qayourself.adapter.AllQuestionGroupAdapter
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.all_question_fragment.*
 
-class MainFragment : Fragment() {
+class AllQuestionFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = AllQuestionFragment()
     }
 
     private lateinit var viewModel: AllQuestionGroupViewModel
@@ -28,7 +28,7 @@ class MainFragment : Fragment() {
     ): View {
 
 
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.all_question_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

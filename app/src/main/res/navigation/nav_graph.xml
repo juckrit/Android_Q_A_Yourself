@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.qayourself.ui.Fragment.MainFragment"
+        android:name="com.example.qayourself.ui.Fragment.AllQuestionFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment">
+        tools:layout="@layout/all_question_fragment">
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/questionFragment"
@@ -28,7 +28,6 @@
             app:destination="@id/choiceFragment"
             app:popUpToInclusive="false"
             app:popUpTo="@+id/mainFragment"
-
             />
 
     </fragment>
