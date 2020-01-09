@@ -10,9 +10,9 @@ import com.example.qayourself.Room.RoomRepository
 import com.example.qayourself.Util.showToast
 import kotlinx.coroutines.launch
 
-class QuestionViewModel(
-    private var repository: RoomRepository = RoomRepository()
+class QuestionViewModel(private var repository: RoomRepository = RoomRepository()
     , private val generator: QuestionGenerator = QuestionGenerator()
+    , val id :Long =0
 ) : ViewModel() {
 
     private val mQuestionLiveData = MutableLiveData<Question>()
@@ -21,7 +21,6 @@ class QuestionViewModel(
     var correctCount: Int = 0
     var incorrectCount: Int = 0
     //    var percentCorrectCount: Int = 0
-    var id: Long = 0
     lateinit var question: Question
 
     private val saveLiveData = MutableLiveData<Long>()
