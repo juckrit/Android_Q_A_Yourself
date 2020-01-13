@@ -52,7 +52,7 @@ class AllQuestionFragment : Fragment() {
         recycleview.adapter = adapter
 
         viewModel.getAllQuestionLiveData().observe(this, Observer { it ->
-            adapter.updateCreatures(it)
+            adapter.updateQuestions(it)
         })
 
 

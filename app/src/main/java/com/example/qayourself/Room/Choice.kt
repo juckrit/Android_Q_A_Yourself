@@ -18,6 +18,6 @@ data class Choice(
     @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
     @ColumnInfo(name = "question_id", index = true)
     @NonNull val questionId: Long,
-    val isTrue: Boolean
-
+    val isTrue: Boolean,
+    val choiceTitle: String
 )
