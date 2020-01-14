@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/play_nav_graph"
+    app:startDestination="@id/allQuestionFragment2">
+
+    <fragment
+        android:id="@+id/allQuestionFragment2"
+        android:name="com.example.qayourself.ui.Fragment.UI_Play.AllQuestionFragment"
+        android:label="AllQuestionFragment"
+        tools:layout="@layout/play_all_question_fragment">
+        <action
+            android:id="@+id/action_allQuestionFragment2_to_consoleActivity"
+            app:destination="@id/consoleActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/consoleActivity"
+        android:name="com.example.qayourself.Activity.ConsoleActivity"
+        android:label="activity_console"
+        tools:layout="@layout/activity_console" />
+
+
+</navigation>

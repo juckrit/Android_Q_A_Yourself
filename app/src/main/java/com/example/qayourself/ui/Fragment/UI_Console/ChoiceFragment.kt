@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment
+package com.example.qayourself.ui.Fragment.UI_Console
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.ChoiceViewModel
-import kotlinx.android.synthetic.main.choice_fragment.view.*
+import kotlinx.android.synthetic.main.console_choice_fragment.view.*
 import android.widget.ArrayAdapter
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -38,7 +38,7 @@ class ChoiceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.choice_fragment, container, false)
+        return inflater.inflate(R.layout.console_choice_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -49,7 +49,8 @@ class ChoiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let { arguments ->
-            val args = ChoiceFragmentArgs.fromBundle(arguments)
+            val args =
+                ChoiceFragmentArgs.fromBundle(arguments)
             question_id = args.questionId
             viewModel = ViewModelProviders.of(this, ViewModelFactory(context!!, question_id))
                 .get(ChoiceViewModel::class.java)

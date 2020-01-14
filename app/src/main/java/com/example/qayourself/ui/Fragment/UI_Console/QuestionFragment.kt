@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment
+package com.example.qayourself.ui.Fragment.UI_Console
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,13 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 
 import com.example.qayourself.R
 import com.example.qayourself.Util.showToast
 import com.example.qayourself.ViewModel.QuestionViewModel
-import kotlinx.android.synthetic.main.question_fragment.*
+import kotlinx.android.synthetic.main.console_question_fragment.*
 
 class QuestionFragment : Fragment() {
 
@@ -41,7 +40,7 @@ class QuestionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.question_fragment, container, false)
+        return inflater.inflate(R.layout.console_question_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,9 +54,10 @@ class QuestionFragment : Fragment() {
 
         viewModel.getSaveLiveData().observe(this, Observer { question_id->
             if (question_id!=0L){
-                val action = QuestionFragmentDirections.actionMainFragmentToChoiceFragment(
-                    questionId = question_id
-                )
+                val action =
+                    QuestionFragmentDirections.actionMainFragmentToChoiceFragment(
+                        questionId = question_id
+                    )
                 view.findNavController()
                     .navigate(action)
 

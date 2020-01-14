@@ -8,8 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
-import com.example.qayourself.ui.Fragment.AllQuestionFragmentDirections
-import com.example.qayourself.ui.Fragment.QuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Console.AllQuestionFragmentDirections
 import kotlinx.android.synthetic.main.list_of_question.view.*
 
 class AllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Question>) :

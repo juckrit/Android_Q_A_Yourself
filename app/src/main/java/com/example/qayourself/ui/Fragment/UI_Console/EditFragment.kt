@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment
+package com.example.qayourself.ui.Fragment.UI_Console
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.EditViewModel
 import com.example.qayourself.ViewModelFactory.ViewModelFactory
-import kotlinx.android.synthetic.main.choice_fragment.view.*
-import kotlinx.android.synthetic.main.edit_fragment.*
+import kotlinx.android.synthetic.main.console_choice_fragment.view.*
+import kotlinx.android.synthetic.main.console_edit_fragment.*
 
 class EditFragment : Fragment() {
 
@@ -31,7 +31,7 @@ class EditFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.edit_fragment, container, false)
+        return inflater.inflate(R.layout.console_edit_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

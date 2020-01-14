@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment
+package com.example.qayourself.ui.Fragment.UI_Console
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
 import com.example.qayourself.adapter.AllQuestionGroupAdapter
-import kotlinx.android.synthetic.main.all_question_fragment.*
+import kotlinx.android.synthetic.main.console_all_question_fragment.*
 
 class AllQuestionFragment : Fragment() {
 
@@ -28,7 +28,7 @@ class AllQuestionFragment : Fragment() {
     ): View {
 
 
-        return inflater.inflate(R.layout.all_question_fragment, container, false)
+        return inflater.inflate(R.layout.console_all_question_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

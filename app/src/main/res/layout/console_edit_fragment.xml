@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.Fragment.EditFragment">
+    tools:context=".ui.Fragment.UI_Console.EditFragment">
 
     <TextView
         android:id="@+id/tv_question_title"

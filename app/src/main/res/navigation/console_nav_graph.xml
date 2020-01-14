@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/allQuestionFragment"
-        android:name="com.example.qayourself.ui.Fragment.AllQuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console.AllQuestionFragment"
         android:label="AllQuestionFragment"
-        tools:layout="@layout/all_question_fragment">
+        tools:layout="@layout/console_all_question_fragment">
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/questionFragment" />
@@ -23,9 +23,9 @@
 
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.qayourself.ui.Fragment.QuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console.QuestionFragment"
         android:label="question_fragment"
-        tools:layout="@layout/question_fragment" >
+        tools:layout="@layout/console_question_fragment" >
         <action
             android:id="@+id/action_mainFragment_to_choiceFragment"
             app:destination="@id/choiceFragment"
@@ -36,9 +36,9 @@
     </fragment>
     <fragment
         android:id="@+id/choiceFragment"
-        android:name="com.example.qayourself.ui.Fragment.ChoiceFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console.ChoiceFragment"
         android:label="choice_fragment"
-        tools:layout="@layout/choice_fragment" >
+        tools:layout="@layout/console_choice_fragment" >
         <argument
             android:name="questionId"
             app:argType="long"
@@ -53,9 +53,9 @@
     </fragment>
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.qayourself.ui.Fragment.EditFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console.EditFragment"
         android:label="edit_fragment"
-        tools:layout="@layout/edit_fragment" >
+        tools:layout="@layout/console_edit_fragment" >
         <argument
             android:name="questionId"
             app:argType="long"
