@@ -15,6 +15,9 @@ interface ChoiceDao {
     @Query("SELECT * FROM choices_table WHERE question_id = :questionId")
     fun getAllChoice(questionId:Long):LiveData<List<Choice>>
 
+    @Query("UPDATE choices_table SET choiceTitle=:choiceTitle, isTrue = :isTrue WHERE choice_id = :choiceId")
+    suspend fun updateChoiceById(choiceId:Long,choiceTitle:String,isTrue:Boolean)
+
 
 
 }

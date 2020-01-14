@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context=".ui.Fragment.UI_Console.EditFragment">
 
     <TextView
@@ -32,8 +32,8 @@
         <EditText
             android:id="@+id/et_choice1"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/spinner1"
@@ -50,7 +50,8 @@
         <EditText
             android:id="@+id/et_choice2"
             android:layout_width="0dp"
-            android:layout_weight="1"            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/spinner2"
@@ -67,7 +68,8 @@
         <EditText
             android:id="@+id/et_choice3"
             android:layout_width="0dp"
-            android:layout_weight="1"            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/spinner3"
@@ -84,7 +86,8 @@
         <EditText
             android:id="@+id/et_choice4"
             android:layout_width="0dp"
-            android:layout_weight="1"            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/spinner4"
@@ -94,9 +97,10 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="save"/>
+        android:text="update" />
 
 </LinearLayout>

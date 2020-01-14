@@ -17,4 +17,8 @@ interface QuestionDao {
 
     @Query("SELECT *  FROM questions_table WHERE question_id == :questionId")
     fun getQuestionById(questionId:Long):LiveData<Question>
+
+    @Query("UPDATE questions_table SET questionTitle=:questionTitle WHERE question_id = :questionId")
+    suspend fun updateQuestionById(questionId:Long,questionTitle:String)
+
 }

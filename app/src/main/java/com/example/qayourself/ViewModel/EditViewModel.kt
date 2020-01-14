@@ -3,9 +3,13 @@ package com.example.qayourself.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.qayourself.Room.Choice
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class EditViewModel(
     val questionId: Long,
@@ -23,8 +27,8 @@ class EditViewModel(
     var is_choice3_correct = false
     var is_choice4_correct = false
 
-   private val questionLiveData = repository.getQuestionByQuestoinId(questionId)
-   private val choicesLiveData = repository.getAllChoice(questionId)
+   private var questionLiveData = repository.getQuestionByQuestoinId(questionId)
+   private var choicesLiveData = repository.getAllChoice(questionId)
 
     fun getQuestionLiveData(): LiveData<Question> {
         return questionLiveData
@@ -33,6 +37,40 @@ class EditViewModel(
     fun getChoicesLiveData(): LiveData<List<Choice>> {
         return choicesLiveData
 
+    }
+
+    fun saveToDB(){
+//        viewModelScope.launch {
+//            repository.updateQuestionById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
+//            repository.updateChoiceById(choicesLiveData.value!![0].id,choicesLiveData.value!![0].choiceTitle,choicesLiveData.value!![0].isTrue)
+//            repository.updateChoiceById(choicesLiveData.value!![1].id,choicesLiveData.value!![1].choiceTitle,choicesLiveData.value!![1].isTrue)
+//            repository.updateChoiceById(choicesLiveData.value!![2].id,choicesLiveData.value!![2].choiceTitle,choicesLiveData.value!![2].isTrue)
+//            repository.updateChoiceById(choicesLiveData.value!![3].id,choicesLiveData.value!![3].choiceTitle,choicesLiveData.value!![3].isTrue)
+//
+//        }
+
+        runBlocking {
+            repository.updateQuestionById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
+            repository.updateChoiceById(choicesLiveData.value!![0].id,choicesLiveData.value!![0].choiceTitle,choicesLiveData.value!![0].isTrue)
+            repository.updateChoiceById(choicesLiveData.value!![1].id,choicesLiveData.value!![1].choiceTitle,choicesLiveData.value!![1].isTrue)
+            repository.updateChoiceById(choicesLiveData.value!![2].id,choicesLiveData.value!![2].choiceTitle,choicesLiveData.value!![2].isTrue)
+            repository.updateChoiceById(choicesLiveData.value!![3].id,choicesLiveData.value!![3].choiceTitle,choicesLiveData.value!![3].isTrue)
+
+        }
+    }
+
+    fun updateAll(newQuestionTitle:String,newChoice1Title:String,newChoice2Title:String,newChoice3Title:String,newChoice4Title:String,newIsChoice1Correct:Boolean,newIsChoice2Correct:Boolean,newIsChoice3Correct:Boolean,newIsChoice4Correct:Boolean){
+        questionLiveData.value?.questionTitle = newQuestionTitle
+        choicesLiveData.value!![0].choiceTitle = newChoice1Title
+        choicesLiveData.value!![1].choiceTitle = newChoice2Title
+        choicesLiveData.value!![2].choiceTitle = newChoice3Title
+        choicesLiveData.value!![3].choiceTitle = newChoice4Title
+        choicesLiveData.value!![0].isTrue = newIsChoice1Correct
+        choicesLiveData.value!![1].isTrue = newIsChoice2Correct
+        choicesLiveData.value!![2].isTrue = newIsChoice3Correct
+        choicesLiveData.value!![3].isTrue = newIsChoice4Correct
+
+        saveToDB()
     }
 
 

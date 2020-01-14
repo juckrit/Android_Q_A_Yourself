@@ -15,9 +15,10 @@ import androidx.room.*
     )
 )
 data class Choice(
-    @PrimaryKey(autoGenerate = true) @NonNull val id: Int,
+    @ColumnInfo(name = "choice_id", index = true)
+    @PrimaryKey(autoGenerate = true) @NonNull val id: Long,
     @ColumnInfo(name = "question_id", index = true)
     @NonNull val questionId: Long,
-    val isTrue: Boolean,
-    val choiceTitle: String
+    var isTrue: Boolean,
+    var choiceTitle: String
 )

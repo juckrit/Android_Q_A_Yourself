@@ -12,9 +12,9 @@ import androidx.room.PrimaryKey
 data class Question(
     @ColumnInfo(name = "question_id", index = true)
     @PrimaryKey(autoGenerate = true) @NonNull val id: Long,
-    val questionTitle: String,
-    val totalView: Int,
-    val totalCorrect: Int,
-    val totalIncorrect: Int,
-    val correctPercent: Int
+    var questionTitle: String,
+    var totalView: Int,
+    var totalCorrect: Int,
+    var totalIncorrect: Int,
+    var correctPercent: Int
 )
