@@ -7,7 +7,7 @@
     android:paddingEnd="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Fragment.UI_Console.AllQuestionFragment">
+    tools:context=".ui.Fragment.UI_Console.ConsoleAllQuestionFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"

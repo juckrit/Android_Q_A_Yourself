@@ -51,9 +51,9 @@ class ChoiceViewModel(val question_id: Long) : ViewModel() {
         this.is_choice4_correct = isChoice4Correct
 
         var c1 = Choice(0, question_id, isChoice1Correct,choice1)
-        var c2 = Choice(0, question_id, isChoice1Correct,choice2)
-        var c3 = Choice(0, question_id, isChoice1Correct,choice3)
-        var c4 = Choice(0, question_id, isChoice1Correct,choice4)
+        var c2 = Choice(0, question_id, isChoice2Correct,choice2)
+        var c3 = Choice(0, question_id, isChoice3Correct,choice3)
+        var c4 = Choice(0, question_id, isChoice4Correct,choice4)
 
         allChoices.add(c1)
         allChoices.add(c2)

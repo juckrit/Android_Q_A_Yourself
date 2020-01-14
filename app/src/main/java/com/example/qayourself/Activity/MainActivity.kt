@@ -6,7 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import com.example.qayourself.R
-import com.example.qayourself.ui.Fragment.UI_Play.AllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Console.ConsoleAllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Play.PlayingAllQuestionFragmentDirections
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +25,28 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.tab_menu ->{
-               val directions = AllQuestionFragmentDirections.actionAllQuestionFragment2ToConsoleActivity()
+               val directions = PlayingAllQuestionFragmentDirections.actionPlayAllQuestionFragmentToConsoleActivity()
                 findNavController(R.id.nav_host_fragment).navigate(directions)
             }
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }

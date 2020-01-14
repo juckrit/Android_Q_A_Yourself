@@ -85,10 +85,10 @@ class ChoiceFragment : Fragment() {
         isChoice3_correct = view?.spinner3?.getSelectedItem().toString().equals("true",true)
         isChoice4_correct = view?.spinner4?.getSelectedItem().toString().equals("true",true)
 
-        c1Title = view?.et_choice1.toString()
-        c2Title = view?.et_choice1.toString()
-        c3Title = view?.et_choice1.toString()
-        c4Title = view?.et_choice1.toString()
+        c1Title = view?.et_choice1?.text.toString()
+        c2Title = view?.et_choice2?.text.toString()
+        c3Title = view?.et_choice3?.text.toString()
+        c4Title = view?.et_choice4?.text.toString()
 
         viewModel.updateAllChoices(c1Title,c2Title,c3Title,c4Title,isChoice1_correct,isChoice2_correct,isChoice3_correct,isChoice4_correct)
 

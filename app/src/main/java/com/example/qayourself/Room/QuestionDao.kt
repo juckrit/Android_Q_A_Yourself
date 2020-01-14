@@ -15,6 +15,6 @@ interface QuestionDao {
     @Query("SELECT *  FROM questions_table ORDER BY question_id DESC")
     fun getAllQuestion(): LiveData<List<Question>>
 
-    @Query("SELECT *  FROM questions_table WHERE question_id = :questionId")
+    @Query("SELECT *  FROM questions_table WHERE question_id == :questionId")
     fun getQuestionById(questionId:Long):LiveData<Question>
 }

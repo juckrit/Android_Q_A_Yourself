@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment.UI_Play
+package com.example.qayourself.ui.Fragment.UI_Console
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -11,13 +11,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qayourself.R
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
-import com.example.qayourself.adapter.AllQuestionGroupAdapter
+import com.example.qayourself.adapter.ConsoleAllQuestionGroupAdapter
 import kotlinx.android.synthetic.main.console_all_question_fragment.*
 
-class AllQuestionFragment : Fragment() {
+class ConsoleAllQuestionFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AllQuestionFragment()
+        fun newInstance() = ConsoleAllQuestionFragment()
     }
 
     private lateinit var viewModel: AllQuestionGroupViewModel
@@ -28,7 +28,7 @@ class AllQuestionFragment : Fragment() {
     ): View {
 
 
-        return inflater.inflate(R.layout.play_all_question_fragment, container, false)
+        return inflater.inflate(R.layout.console_all_question_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -41,8 +41,13 @@ class AllQuestionFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
 
 
+        floatingActionButton.setOnClickListener { buttonView ->
+            buttonView
+                .findNavController()
+                .navigate(R.id.action_firstFragment_to_secondFragment)
+        }
 
-        val adapter = AllQuestionGroupAdapter(context!!, mutableListOf())
+        val adapter = ConsoleAllQuestionGroupAdapter(context!!, mutableListOf())
         recycleview.layoutManager = LinearLayoutManager(context!!)
         recycleview.adapter = adapter
 

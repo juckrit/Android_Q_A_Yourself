@@ -3,22 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/play_nav_graph"
-    app:startDestination="@id/allQuestionFragment2">
+    app:startDestination="@id/playAllQuestionFragment">
 
     <fragment
-        android:id="@+id/allQuestionFragment2"
-        android:name="com.example.qayourself.ui.Fragment.UI_Play.AllQuestionFragment"
+        android:id="@+id/playAllQuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Play.PlayingAllQuestionFragment"
         android:label="AllQuestionFragment"
         tools:layout="@layout/play_all_question_fragment">
+
         <action
-            android:id="@+id/action_allQuestionFragment2_to_consoleActivity"
+            android:id="@+id/action_playAllQuestionFragment_to_consoleActivity"
             app:destination="@id/consoleActivity" />
+        <action
+            android:id="@+id/action_playAllQuestionFragment_to_playingFragment"
+            app:destination="@id/playingFragment" />
     </fragment>
     <activity
         android:id="@+id/consoleActivity"
         android:name="com.example.qayourself.Activity.ConsoleActivity"
         android:label="activity_console"
         tools:layout="@layout/activity_console" />
+    <fragment
+        android:id="@+id/playingFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Play.PlayingFragment"
+        android:label="playing_fragment"
+        tools:layout="@layout/playing_fragment">
+        <argument
+            android:name="questionId"
+            android:defaultValue="1L"
+            app:argType="long" />
+    </fragment>
 
 
 </navigation>

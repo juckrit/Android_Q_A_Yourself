@@ -1,6 +1,7 @@
 package com.example.qayourself.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +9,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
-import com.example.qayourself.ui.Fragment.UI_Console.AllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Console.ConsoleAllQuestionFragmentDirections
 import kotlinx.android.synthetic.main.list_of_question.view.*
 
-class AllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Question>) :
-    RecyclerView.Adapter<AllQuestionGroupAdapter.ViewHolder>() {
+class ConsoleAllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Question>) :
+    RecyclerView.Adapter<ConsoleAllQuestionGroupAdapter.ViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
 
@@ -45,12 +46,14 @@ class AllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Qu
             itv.tv_correctPercent.text = question.correctPercent.toString()
             itv.setOnClickListener {
 
-                val action = AllQuestionFragmentDirections.actionAllQuestionFragmentToEditFragment(
-                    questionId =question.id
+                val action = ConsoleAllQuestionFragmentDirections.actionAllQuestionFragmentToEditFragment(
+                    questionIdForEdit = question.id
                 )
 
                 it.findNavController()
                     .navigate(action)
+
+
             }
         }
     }
