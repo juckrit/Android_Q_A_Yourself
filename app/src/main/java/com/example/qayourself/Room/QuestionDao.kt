@@ -21,4 +21,6 @@ interface QuestionDao {
     @Query("UPDATE questions_table SET questionTitle=:questionTitle WHERE question_id = :questionId")
     suspend fun updateQuestionById(questionId:Long,questionTitle:String)
 
+    @Query("UPDATE questions_table SET totalView = totalView + 1 WHERE question_id =:questionId")
+    suspend fun increaseQuestionViewById(questionId:Long)
 }

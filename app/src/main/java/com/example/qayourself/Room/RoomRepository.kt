@@ -17,31 +17,37 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
 //        parentJob.cancel()
 //    }
 
-    suspend fun addChoices(choices: MutableList<Choice>) {
-        insertChoice(choices)
-    }
+
+
+//    suspend fun addChoices(choices: MutableList<Choice>) {
+//        insertChoice(choices)
+//    }
 
 //    suspend fun updateQuestionByID(questionId: Long, questionTitle: String) {
 //        updateQuestionByID(questionId, questionTitle)
 //    }
 
-    fun getQuestionByQuestoinId(id: Long): LiveData<Question> {
-        return getQestionById(id)
+//    fun getQuestionByQuestoinId(id: Long): LiveData<Question> {
+//        return getQuestionById(id)
+//    }
+//
+//    suspend fun saveQuestion(question: Question): Long {
+//        return insertQuestion(question)
+//    }
+//
+//    suspend fun removeQuestion(question: Question) {
+//        deleteQuestion(question)
+//    }
+//
+//    fun getAllOfQuestion(): LiveData<List<Question>> {
+//        return getAllQuestion()
+//    }
+
+    override suspend fun increaseQuestionViewById(questionId: Long) {
+        questionDao.increaseQuestionViewById(questionId)
     }
 
-    suspend fun saveQuestion(question: Question): Long {
-        return insertQuestion(question)
-    }
-
-    suspend fun removeQuestion(question: Question) {
-        deleteQuestion(question)
-    }
-
-    fun getAllOfQuestion(): LiveData<List<Question>> {
-        return getAllQuestion()
-    }
-
-    override fun getQestionById(id: Long): LiveData<Question> {
+    override fun getQuestionById(id: Long): LiveData<Question> {
         return questionDao.getQuestionById(id)
     }
 
@@ -79,7 +85,7 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
     }
 
     override suspend fun updateChoiceById(choiceId: Long, choiceTitle: String, isTrue: Boolean) {
-        choiceDao.updateChoiceById(choiceId,choiceTitle,isTrue)
+        choiceDao.updateChoiceById(choiceId, choiceTitle, isTrue)
     }
 
 }

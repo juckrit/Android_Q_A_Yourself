@@ -53,5 +53,73 @@
         android:textSize="18sp"
         tools:text="4" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="views:"/>
+
+        <TextView
+            android:id="@+id/tv_total_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="correct:"/>
+
+        <TextView
+            android:id="@+id/tv_total_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="incorrect:"/>
+
+        <TextView
+            android:id="@+id/tv_total_incorrect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="correct percent:"/>
+
+        <TextView
+            android:id="@+id/tv_correct_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"/>
+
+    </LinearLayout>
 
 </LinearLayout>

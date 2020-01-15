@@ -72,7 +72,7 @@ class QuestionViewModel(private var repository: RoomRepository = RoomRepository(
         if (canSaveQuestion()) {
             var id = 0L
             viewModelScope.launch {
-                id = repository.saveQuestion(question)
+                id = repository.insertQuestion(question)
                 saveLiveData.postValue(id)
 
             }

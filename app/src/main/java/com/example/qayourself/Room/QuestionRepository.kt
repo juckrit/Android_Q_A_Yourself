@@ -9,8 +9,10 @@ interface QuestionRepository {
 
     fun getAllQuestion(): LiveData<List<Question>>
 
-    fun getQestionById(id: Long): LiveData<Question>
+    fun getQuestionById(id: Long): LiveData<Question>
 
     suspend fun updateQuestionById(questionId: Long, questionTitle: String)
+
+    suspend fun increaseQuestionViewById(questionId:Long)
 
 }

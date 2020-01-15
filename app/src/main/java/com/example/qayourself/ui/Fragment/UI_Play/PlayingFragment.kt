@@ -2,14 +2,13 @@ package com.example.qayourself.ui.Fragment.UI_Play
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 
 import com.example.qayourself.R
+import com.example.qayourself.Util.showToast
 import com.example.qayourself.ViewModel.PlayingViewModel
 import com.example.qayourself.ViewModelFactory.ViewModelFactory
 import com.example.qayourself.ui.Fragment.UI_Console.EditFragmentArgs
@@ -19,6 +18,7 @@ class PlayingFragment : Fragment() {
 
     var questionId: Long = -1
     val args by navArgs<PlayingFragmentArgs>()
+    var correctedChoicePosition = -1
 
 
     companion object {
@@ -34,6 +34,19 @@ class PlayingFragment : Fragment() {
         return inflater.inflate(R.layout.playing_fragment, container, false)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.clear()
+    }
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -43,18 +56,64 @@ class PlayingFragment : Fragment() {
 
 
         setUp()
+        addListenerToView()
+    }
+
+
+    private fun addListenerToView() {
+        btn_choice_1.setOnClickListener {
+            sendAnswer(1)
+        }
+        btn_choice_2.setOnClickListener {
+            sendAnswer(2)
+        }
+        btn_choice_3.setOnClickListener {
+            sendAnswer(3)
+        }
+        btn_choice_4.setOnClickListener {
+            sendAnswer(4)
+        }
     }
 
     private fun setUp() {
         viewModel.getQuestionLiveData().observe(this, Observer {
             tv_question_title.setText(it.questionTitle)
+            tv_total_view.setText(it.totalView.minus(1).toString())
+            tv_total_correct.setText(it.totalCorrect.toString())
+            tv_total_incorrect.setText(it.totalIncorrect.toString())
+            tv_correct_percent.setText(it.correctPercent.toString())
+            var percent = it.correctPercent
+            var totalView = it.totalView
+            var totalCorrect = it.totalCorrect
+            if (totalView==0){
+
+            }else{
+                percent = (totalCorrect * 100) / totalView
+
+            }
+
         })
         viewModel.getChoiceLiveData().observe(this, Observer {
             btn_choice_1.setText(it[0].choiceTitle)
             btn_choice_2.setText(it[1].choiceTitle)
             btn_choice_3.setText(it[2].choiceTitle)
             btn_choice_4.setText(it[3].choiceTitle)
+            it.forEachIndexed { index, element ->
+                if (element.isTrue){
+                    correctedChoicePosition = index+1
+                }
+            }
         })
+    }
+
+    private fun sendAnswer(choicePosition:Int){
+        if (choicePosition == correctedChoicePosition){
+            showToast(context,"true")
+
+        }else{
+            showToast(context,"false")
+
+        }
     }
 
 }

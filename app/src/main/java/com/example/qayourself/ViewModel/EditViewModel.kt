@@ -23,7 +23,7 @@ class EditViewModel(
     var is_choice3_correct = false
     var is_choice4_correct = false
 
-   private var questionLiveData = repository.getQuestionByQuestoinId(questionId)
+   private var questionLiveData = repository.getQuestionById(questionId)
    private var choicesLiveData = repository.getChoiceByQuestionId(questionId)
 
     fun getQuestionLiveData(): LiveData<Question> {

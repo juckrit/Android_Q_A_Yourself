@@ -25,7 +25,7 @@ class ChoiceViewModel(val question_id: Long) : ViewModel() {
 
 
     private var questionLiveData: LiveData<Question> =
-        repository.getQuestionByQuestoinId(question_id)
+        repository.getQuestionById(question_id)
 
     fun getQuestionLiveData(): LiveData<Question> {
         return questionLiveData
@@ -61,7 +61,7 @@ class ChoiceViewModel(val question_id: Long) : ViewModel() {
         allChoices.add(c4)
 
         viewModelScope.launch {
-            repository.addChoices(allChoices)
+            repository.insertChoice(allChoices)
 
         }
 

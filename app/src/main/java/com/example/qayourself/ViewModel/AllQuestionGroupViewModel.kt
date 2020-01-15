@@ -8,7 +8,7 @@ import com.example.qayourself.Room.RoomRepository
 
 class AllQuestionGroupViewModel(private var repository: RoomRepository = RoomRepository()) : ViewModel() {
 
-    private val allQuestionLiveData = repository.getAllOfQuestion()
+    private val allQuestionLiveData = repository.getAllQuestion()
 //    private var allQuestionLiveData= MutableLiveData<List<Question>>()
 
 //    init {
