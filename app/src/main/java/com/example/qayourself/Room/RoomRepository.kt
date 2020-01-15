@@ -2,10 +2,6 @@ package com.example.qayourself.Room
 
 import androidx.lifecycle.LiveData
 import com.example.qayourself.BaseApplication
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 
 class RoomRepository : QuestionRepository, ChoiceRepository {
 
@@ -73,8 +69,8 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
 
     }
 
-    override fun getAllChoice(questionId: Long): LiveData<List<Choice>> {
-        return choiceDao.getAllChoice(questionId)
+    override fun getChoiceByQuestionId(questionId: Long): LiveData<List<Choice>> {
+        return choiceDao.getChoiceByQuestionId(questionId)
     }
 
 

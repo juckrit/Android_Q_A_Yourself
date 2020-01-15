@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.qayourself.Room.RoomRepository
 import com.example.qayourself.ViewModel.ChoiceViewModel
 import com.example.qayourself.ViewModel.EditViewModel
+import com.example.qayourself.ViewModel.PlayingViewModel
 
 class ViewModelFactory(private val mContext: Context, private val question_id: Long) : ViewModelProvider.NewInstanceFactory() {
 
@@ -14,6 +15,8 @@ class ViewModelFactory(private val mContext: Context, private val question_id: L
             ChoiceViewModel(question_id) as T
         }else if (modelClass == EditViewModel::class.java){
             EditViewModel(question_id, RoomRepository()) as T
+        }else if (modelClass == PlayingViewModel::class.java){
+            PlayingViewModel(question_id, RoomRepository()) as T
         }
 
         else {

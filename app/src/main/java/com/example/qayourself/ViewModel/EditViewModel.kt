@@ -1,14 +1,10 @@
 package com.example.qayourself.ViewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.qayourself.Room.Choice
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class EditViewModel(
@@ -28,7 +24,7 @@ class EditViewModel(
     var is_choice4_correct = false
 
    private var questionLiveData = repository.getQuestionByQuestoinId(questionId)
-   private var choicesLiveData = repository.getAllChoice(questionId)
+   private var choicesLiveData = repository.getChoiceByQuestionId(questionId)
 
     fun getQuestionLiveData(): LiveData<Question> {
         return questionLiveData

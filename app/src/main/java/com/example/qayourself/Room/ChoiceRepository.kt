@@ -7,7 +7,7 @@ interface ChoiceRepository {
 
     suspend fun deleteChoice(choice: Choice)
 
-    fun getAllChoice(questionId: Long): LiveData<List<Choice>>
+    fun getChoiceByQuestionId(questionId: Long): LiveData<List<Choice>>
 
     suspend fun updateChoiceById(choiceId:Long,choiceTitle:String,isTrue:Boolean)
 
