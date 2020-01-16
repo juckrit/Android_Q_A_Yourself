@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Q&amp;A Yourself</string>
+
+    <string-array name="sort_spinner">
+        <item>newest</item>
+        <item>oldest</item>
+        <item>name asc</item>
+        <item>name desc</item>
+        <item>most view</item>
+        <item>less view</item>
+        <item>most correct</item>
+        <item>most incorrect</item>
+    </string-array>
 </resources>
