@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/playAllQuestionFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Play.PlayingAllQuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Play_Page.PlayingAllQuestionFragment"
         android:label="AllQuestionFragment"
         tools:layout="@layout/play_all_question_fragment">
 
@@ -25,7 +25,7 @@
         tools:layout="@layout/activity_console" />
     <fragment
         android:id="@+id/playingFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Play.PlayingFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Play_Page.PlayingFragment"
         android:label="playing_fragment"
         tools:layout="@layout/playing_fragment">
         <argument

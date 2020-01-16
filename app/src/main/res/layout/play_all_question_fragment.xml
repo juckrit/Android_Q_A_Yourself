@@ -7,7 +7,7 @@
     android:paddingEnd="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Fragment.UI_Console.ConsoleAllQuestionFragment">
+    tools:context=".ui.Fragment.UI_Console_Page.ConsoleAllQuestionFragment">
 
     <Spinner
         android:id="@+id/spinner_sort"

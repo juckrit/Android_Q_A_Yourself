@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment.UI_Play
+package com.example.qayourself.ui.Fragment.UI_Play_Page
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -8,10 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 
 import com.example.qayourself.R
-import com.example.qayourself.Util.showToast
 import com.example.qayourself.ViewModel.PlayingViewModel
 import com.example.qayourself.ViewModelFactory.ViewModelFactory
-import com.example.qayourself.ui.Fragment.UI_Console.EditFragmentArgs
 import kotlinx.android.synthetic.main.playing_fragment.*
 
 class PlayingFragment : Fragment() {

@@ -1,7 +1,6 @@
 package com.example.qayourself.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
-import com.example.qayourself.ui.Fragment.UI_Console.ConsoleAllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Console_Page.ConsoleAllQuestionFragmentDirections
 import kotlinx.android.synthetic.main.list_of_question.view.*
 
 class ConsoleAllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Question>) :

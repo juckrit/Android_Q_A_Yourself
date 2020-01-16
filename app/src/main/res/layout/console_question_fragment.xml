@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".ui.Fragment.UI_Console.QuestionFragment">
+        tools:context=".ui.Fragment.UI_Console_Page.QuestionFragment">
 
 
         <TextView

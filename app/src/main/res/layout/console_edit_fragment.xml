@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".ui.Fragment.UI_Console.EditFragment">
+    tools:context=".ui.Fragment.UI_Console_Page.EditFragment">
 
     <TextView
         android:id="@+id/tv_question_title"

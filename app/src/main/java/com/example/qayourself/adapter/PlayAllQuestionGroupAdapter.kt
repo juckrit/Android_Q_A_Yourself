@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
-import com.example.qayourself.ui.Fragment.UI_Play.PlayingAllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Play_Page.PlayingAllQuestionFragmentDirections
 import kotlinx.android.synthetic.main.list_of_question.view.*
 
 class PlayAllQuestionGroupAdapter(val context: Context, val dataList: MutableList<Question>) :

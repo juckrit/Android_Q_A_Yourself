@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment.UI_Console
+package com.example.qayourself.ui.Fragment.UI_Console_Page
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

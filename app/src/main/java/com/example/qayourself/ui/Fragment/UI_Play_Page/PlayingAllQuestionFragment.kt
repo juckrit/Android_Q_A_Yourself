@@ -1,4 +1,4 @@
-package com.example.qayourself.ui.Fragment.UI_Play
+package com.example.qayourself.ui.Fragment.UI_Play_Page
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

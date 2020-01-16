@@ -6,8 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import com.example.qayourself.R
-import com.example.qayourself.ui.Fragment.UI_Console.ConsoleAllQuestionFragmentDirections
-import com.example.qayourself.ui.Fragment.UI_Play.PlayingAllQuestionFragmentDirections
+import com.example.qayourself.ui.Fragment.UI_Play_Page.PlayingAllQuestionFragmentDirections
 
 class MainActivity : AppCompatActivity() {
 

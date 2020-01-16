@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/allQuestionFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Console.ConsoleAllQuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console_Page.ConsoleAllQuestionFragment"
         android:label="AllQuestionFragment"
         tools:layout="@layout/console_all_question_fragment">
         <action
@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Console.QuestionFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console_Page.QuestionFragment"
         android:label="question_fragment"
         tools:layout="@layout/console_question_fragment" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/choiceFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Console.ChoiceFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console_Page.ChoiceFragment"
         android:label="choice_fragment"
         tools:layout="@layout/console_choice_fragment" >
         <argument
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/editFragment"
-        android:name="com.example.qayourself.ui.Fragment.UI_Console.EditFragment"
+        android:name="com.example.qayourself.ui.Fragment.UI_Console_Page.EditFragment"
         android:label="console_edit_fragment"
         tools:layout="@layout/console_edit_fragment" >
         <argument
