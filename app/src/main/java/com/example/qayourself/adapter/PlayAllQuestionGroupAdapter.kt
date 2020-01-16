@@ -21,38 +21,67 @@ class PlayAllQuestionGroupAdapter(val context: Context, val dataList: MutableLis
 
 
 
-    private var myFilter: android.widget.Filter = object : android.widget.Filter() {
-        override fun performFiltering(constraint: CharSequence?): FilterResults {
-            var filteredList = mutableListOf<Question>()
-            if (constraint==null || constraint.isEmpty()) {
-                filteredList.addAll(dataList)
-            } else {
-                var filterPattern = constraint.toString().toLowerCase().trim()
-                dataList.forEach {
-                    if (it.questionTitle.equals(filterPattern, true)) {
-                        filteredList.add(it)
-                    }
+    // Single not-to-be-modified copy of original data in the list.
+    var originalList = listOf<Question>()
+    // a method-body to invoke when search returns nothing. It can be null.
+    private var onNothingFound: (() -> Unit)? = null
+
+    /**
+     * Searches a specific item in the list and updates adapter.
+     * if the search returns empty then onNothingFound callback is invoked if provided which can be used to update UI
+     * @param s the search query or text. It can be null.
+     * @param onNothingFound a method-body to invoke when search returns nothing. It can be null.
+     */
+    fun search(s: String?, onNothingFound: (() -> Unit)?) {
+        this.onNothingFound = onNothingFound
+        filter?.filter(s)
+
+    }
+
+
+    override fun getFilter(): android.widget.Filter? {
+        return object : android.widget.Filter() {
+            private val filterResults = FilterResults()
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                dataList.clear()
+                if (constraint.isNullOrBlank()) {
+                    dataList.addAll(originalList)
+                } else {
+                    val searchResults = originalList.filter { it.questionTitle.contains(constraint) }
+                    dataList.addAll(searchResults)
+                }
+                return filterResults.also {
+                    it.values = dataList
                 }
             }
-            var result = FilterResults()
-            result.values = filteredList
-            return result
-        }
 
-        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            dataList.clear()
-            dataList.addAll(results?.values as Collection<Question>)
-            notifyDataSetChanged()
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                // no need to use "results" filtered list provided by this method.
+                if (dataList.isNullOrEmpty())
+                    onNothingFound?.invoke()
+                notifyDataSetChanged()
+
+            }
         }
     }
+
+    interface Searchable {
+        /** This method will allow to specify a search string to compare against
+        your search this can be anything depending on your use case.
+         */
+        fun getSearchCriteria(): Question
+    }
+
+
+
+
+
+
     private val inflater = LayoutInflater.from(context)
 
 
 
 
-    override fun getFilter(): android.widget.Filter {
-        return myFilter
-    }
 
 
     fun updateQuestions(questions: List<Question>) {

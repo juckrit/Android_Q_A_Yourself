@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.qayourself.R
 import com.example.qayourself.Room.Question
+import com.example.qayourself.Util.showToast
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
 import com.example.qayourself.adapter.PlayAllQuestionGroupAdapter
 import kotlinx.android.synthetic.main.console_all_question_fragment.recycleview
@@ -28,6 +30,7 @@ class PlayingAllQuestionFragment : Fragment() {
 
     private lateinit var viewModel: AllQuestionGroupViewModel
     lateinit var dataList: List<Question>
+    lateinit var adapter : PlayAllQuestionGroupAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,27 +51,31 @@ class PlayingAllQuestionFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
 
 
-        val adapter = PlayAllQuestionGroupAdapter(context!!, mutableListOf())
+         adapter = PlayAllQuestionGroupAdapter(context!!, mutableListOf())
         recycleview.layoutManager = LinearLayoutManager(context!!)
         recycleview.adapter = adapter
 
         viewModel.getAllQuestionLiveData().observe(this, Observer { it ->
             dataList = sortAllQuestionByIdDesc(it)
             adapter.updateQuestions(dataList)
+            adapter.originalList = it
         })
 
         searchView.imeOptions = EditorInfo.IME_ACTION_DONE
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filter.filter(newText)
+                search(newText)
                 return false
             }
         })
+
 
         spinner_sort.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -121,6 +128,13 @@ class PlayingAllQuestionFragment : Fragment() {
         }
 
 
+    }
+
+    private fun search(s: String?) {
+        adapter.search(s) {
+            // update UI on nothing found
+            showToast(context, "Nothing Found")
+        }
     }
 
     override fun onStart() {
