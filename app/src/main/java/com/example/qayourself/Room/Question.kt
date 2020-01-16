@@ -18,7 +18,4 @@ data class Question(
     var totalCorrect: Int,
     var totalIncorrect: Int,
     var correctPercent: Int
-): PlayAllQuestionGroupAdapter.Searchable {
-    override fun getSearchCriteria(): Question {
-        return this    }
-}
+)

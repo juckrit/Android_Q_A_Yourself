@@ -65,12 +65,7 @@ class PlayAllQuestionGroupAdapter(val context: Context, val dataList: MutableLis
         }
     }
 
-    interface Searchable {
-        /** This method will allow to specify a search string to compare against
-        your search this can be anything depending on your use case.
-         */
-        fun getSearchCriteria(): Question
-    }
+
 
 
 
