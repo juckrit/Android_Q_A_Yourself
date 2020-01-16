@@ -11,8 +11,12 @@ interface QuestionRepository {
 
     fun getQuestionById(id: Long): LiveData<Question>
 
-    suspend fun updateQuestionById(questionId: Long, questionTitle: String)
+    suspend fun updateQuestionTitleById(questionId: Long, questionTitle: String)
 
     suspend fun increaseQuestionViewById(questionId:Long)
+
+    suspend fun updateQuestionWhenCorrectById(questionId: Long)
+
+    suspend fun updateQuestionWhenIncorrectById(questionId: Long)
 
 }

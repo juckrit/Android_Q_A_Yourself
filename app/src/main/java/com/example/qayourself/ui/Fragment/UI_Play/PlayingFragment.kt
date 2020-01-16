@@ -82,15 +82,7 @@ class PlayingFragment : Fragment() {
             tv_total_correct.setText(it.totalCorrect.toString())
             tv_total_incorrect.setText(it.totalIncorrect.toString())
             tv_correct_percent.setText(it.correctPercent.toString())
-            var percent = it.correctPercent
-            var totalView = it.totalView
-            var totalCorrect = it.totalCorrect
-            if (totalView==0){
 
-            }else{
-                percent = (totalCorrect * 100) / totalView
-
-            }
 
         })
         viewModel.getChoiceLiveData().observe(this, Observer {
@@ -108,10 +100,10 @@ class PlayingFragment : Fragment() {
 
     private fun sendAnswer(choicePosition:Int){
         if (choicePosition == correctedChoicePosition){
-            showToast(context,"true")
+            viewModel.updateQuestionWhenCorrectById()
 
         }else{
-            showToast(context,"false")
+            viewModel.updateQuestionWhenIncorrectById()
 
         }
     }

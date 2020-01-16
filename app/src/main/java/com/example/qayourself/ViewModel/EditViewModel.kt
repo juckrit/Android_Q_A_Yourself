@@ -37,7 +37,7 @@ class EditViewModel(
 
     fun saveToDB(){
 //        viewModelScope.launch {
-//            repository.updateQuestionById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
+//            repository.updateQuestionTitleById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
 //            repository.updateChoiceById(choicesLiveData.value!![0].id,choicesLiveData.value!![0].choiceTitle,choicesLiveData.value!![0].isTrue)
 //            repository.updateChoiceById(choicesLiveData.value!![1].id,choicesLiveData.value!![1].choiceTitle,choicesLiveData.value!![1].isTrue)
 //            repository.updateChoiceById(choicesLiveData.value!![2].id,choicesLiveData.value!![2].choiceTitle,choicesLiveData.value!![2].isTrue)
@@ -46,7 +46,7 @@ class EditViewModel(
 //        }
 
         runBlocking {
-            repository.updateQuestionById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
+            repository.updateQuestionTitleById(questionLiveData.value?.id!!,questionLiveData.value?.questionTitle!!)
             repository.updateChoiceById(choicesLiveData.value!![0].id,choicesLiveData.value!![0].choiceTitle,choicesLiveData.value!![0].isTrue)
             repository.updateChoiceById(choicesLiveData.value!![1].id,choicesLiveData.value!![1].choiceTitle,choicesLiveData.value!![1].isTrue)
             repository.updateChoiceById(choicesLiveData.value!![2].id,choicesLiveData.value!![2].choiceTitle,choicesLiveData.value!![2].isTrue)

@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class PlayingViewModel(
     val questionId: Long,
@@ -31,7 +32,22 @@ class PlayingViewModel(
 
 
     suspend fun updateQuestionStat(view:Int,correct:Int,incorrect:Int,percent:Int) {
+        questionLiveData.value?.totalView = view
+        questionLiveData.value?.totalCorrect=correct
+        questionLiveData.value?.totalIncorrect=incorrect
+        questionLiveData.value?.correctPercent=percent
 
+    }
 
+    fun updateQuestionWhenCorrectById() {
+        runBlocking {
+            repository.updateQuestionWhenCorrectById(questionId)
+        }
+    }
+
+    fun updateQuestionWhenIncorrectById() {
+        runBlocking {
+            repository.updateQuestionWhenIncorrectById(questionId)
+        }
     }
 }
