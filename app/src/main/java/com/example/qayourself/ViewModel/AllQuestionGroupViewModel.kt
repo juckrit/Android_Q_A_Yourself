@@ -7,6 +7,8 @@ import com.example.qayourself.Room.Question
 import com.example.qayourself.Room.RoomRepository
 import android.R.attr.data
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.Comparator
 
@@ -25,5 +27,11 @@ class AllQuestionGroupViewModel(private var repository: RoomRepository = RoomRep
         return allQuestionLiveData
     }
 
+    fun deleteQuestionById(id:Long){
+        viewModelScope.launch {
+            repository.deleteQuestionById(id)
+
+        }
+    }
 
 }

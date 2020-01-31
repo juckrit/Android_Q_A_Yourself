@@ -23,9 +23,12 @@ class ConsoleAllQuestionFragment : Fragment(), ItemDragListener {
 
     companion object {
         fun newInstance() = ConsoleAllQuestionFragment()
+        private lateinit var viewModel: AllQuestionGroupViewModel
+
+        fun getViewModel() = viewModel
+
     }
 
-    private lateinit var viewModel: AllQuestionGroupViewModel
     private lateinit var adapter: ConsoleAllQuestionGroupAdapter
     private lateinit var itemTouchHelper: ItemTouchHelper
 
@@ -102,6 +105,12 @@ class ConsoleAllQuestionFragment : Fragment(), ItemDragListener {
     override fun onItemDrag(viewHolder: RecyclerView.ViewHolder) {
         itemTouchHelper.startDrag(viewHolder)
     }
+
+    fun deleteQuestionById(id:Long){
+        viewModel.deleteQuestionById(id)
+    }
+
+
 
 
 }

@@ -30,4 +30,6 @@ interface QuestionDao {
     @Query("UPDATE questions_table SET totalIncorrect = totalIncorrect+1  WHERE question_id = :questionId")
     suspend fun updateQuestionWhenIncorrectById(questionId: Long)
 
+    @Query("DELETE FROM questions_table WHERE question_id=:questionId")
+    suspend fun deleteQuestionById(questionId: Long)
 }

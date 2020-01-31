@@ -13,6 +13,7 @@ import com.example.qayourself.Room.Question
 import com.example.qayourself.Util.ItemDragListener
 import com.example.qayourself.Util.ItemSelectedListener
 import com.example.qayourself.Util.ItemTouchHelperListener
+import com.example.qayourself.ui.Fragment.UI_Console_Page.ConsoleAllQuestionFragment
 import com.example.qayourself.ui.Fragment.UI_Console_Page.ConsoleAllQuestionFragmentDirections
 import kotlinx.android.synthetic.main.list_of_question.view.*
 import kotlinx.android.synthetic.main.list_of_question.view.tv_correctPercent
@@ -28,6 +29,12 @@ class ConsoleAllQuestionGroupAdapter(
 ) :
     RecyclerView.Adapter<ConsoleAllQuestionGroupAdapter.ViewHolder>()
     , ItemTouchHelperListener {
+
+    override fun onItemDismiss(viewHolder: RecyclerView.ViewHolder, position: Int) {
+        ConsoleAllQuestionFragment.getViewModel().deleteQuestionById(dataList[position].id)
+        dataList.removeAt(position)
+        notifyItemRemoved(position)
+    }
 
     override fun onItemMove(
         recyclerView: RecyclerView,
@@ -100,7 +107,12 @@ class ConsoleAllQuestionGroupAdapter(
 
 
         override fun onItemSelected() {
-            itv.listItemContainer.setBackgroundColor(ContextCompat.getColor(itv.context,R.color.colorSelectedItem))
+            itv.listItemContainer.setBackgroundColor(
+                ContextCompat.getColor(
+                    itv.context,
+                    R.color.colorSelectedItem
+                )
+            )
         }
 
         override fun onItemCleared() {

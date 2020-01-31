@@ -6,7 +6,6 @@ import com.example.qayourself.BaseApplication
 class RoomRepository : QuestionRepository, ChoiceRepository {
 
 
-
 //    private val parentJob = Job()
 //    private val coroutineScope = CoroutineScope(Dispatchers.Main + parentJob)
 
@@ -42,6 +41,10 @@ class RoomRepository : QuestionRepository, ChoiceRepository {
 //    fun getAllOfQuestion(): LiveData<List<Question>> {
 //        return getAllQuestion()
 //    }
+
+    override suspend fun deleteQuestionById(questionId: Long) {
+        questionDao.deleteQuestionById(questionId)
+    }
 
     override suspend fun updateQuestionWhenIncorrectById(questionId: Long) {
         questionDao.updateQuestionWhenIncorrectById(questionId)
