@@ -8,19 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.qayourself.R
+import com.example.qayourself.Util.ItemDragListener
+import com.example.qayourself.Util.ItemTouchHelperCallback
 import com.example.qayourself.ViewModel.AllQuestionGroupViewModel
 import com.example.qayourself.adapter.ConsoleAllQuestionGroupAdapter
 import kotlinx.android.synthetic.main.console_all_question_fragment.*
 
-class ConsoleAllQuestionFragment : Fragment() {
+class ConsoleAllQuestionFragment : Fragment(), ItemDragListener {
+
 
     companion object {
         fun newInstance() = ConsoleAllQuestionFragment()
     }
 
     private lateinit var viewModel: AllQuestionGroupViewModel
+    private lateinit var adapter: ConsoleAllQuestionGroupAdapter
+    private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,25 +45,37 @@ class ConsoleAllQuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
+        setupViewmodel()
+        setupFloatingActionButtonListener()
+        setupAdapterAndRecycleview()
+        observeViewModel()
+        setupItemTouchHelper()
 
 
+    }
+
+    private fun setupAdapterAndRecycleview() {
+        adapter = ConsoleAllQuestionGroupAdapter(context!!, mutableListOf(),this)
+        recycleview.layoutManager = LinearLayoutManager(context!!)
+        recycleview.adapter = adapter
+    }
+
+    private fun observeViewModel() {
+        viewModel.getAllQuestionLiveData().observe(this, Observer { it ->
+            adapter.updateQuestions(it)
+        })
+    }
+
+    private fun setupFloatingActionButtonListener() {
         floatingActionButton.setOnClickListener { buttonView ->
             buttonView
                 .findNavController()
                 .navigate(R.id.action_firstFragment_to_secondFragment)
         }
+    }
 
-        val adapter = ConsoleAllQuestionGroupAdapter(context!!, mutableListOf())
-        recycleview.layoutManager = LinearLayoutManager(context!!)
-        recycleview.adapter = adapter
-
-        viewModel.getAllQuestionLiveData().observe(this, Observer { it ->
-            adapter.updateQuestions(it)
-        })
-
-
-
+    private fun setupViewmodel() {
+        viewModel = ViewModelProviders.of(this).get(AllQuestionGroupViewModel::class.java)
     }
 
     override fun onStart() {
@@ -74,5 +93,15 @@ class ConsoleAllQuestionFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
+
+    fun setupItemTouchHelper() {
+        itemTouchHelper = ItemTouchHelper(ItemTouchHelperCallback(adapter))
+        itemTouchHelper.attachToRecyclerView(recycleview)
+    }
+
+    override fun onItemDrag(viewHolder: RecyclerView.ViewHolder) {
+        itemTouchHelper.startDrag(viewHolder)
+    }
+
 
 }
